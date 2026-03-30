@@ -4,53 +4,79 @@
     <title>Stan H - CS 499 ePortfolio</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(to right, #eef2f7, #e3e9f2);
             margin: 0;
             padding: 0;
         }
+
         header {
-            background-color: #1e2a38;
+            background: linear-gradient(135deg, #1e2a38, #2d3e50);
             color: white;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
         }
+
         main {
             padding: 40px;
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
-            background-color: white;
         }
-        h1, h2 {
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        h2 {
             margin-bottom: 10px;
+            color: #1e2a38;
         }
+
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+
         ul {
             line-height: 1.8;
         }
+
+        /* CARD STYLE */
         .section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ccc;
+            background: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
         }
+
+        .section:hover {
+            transform: translateY(-3px);
+        }
+
+        /* BUTTON LINKS */
         .artifact-links a {
             display: inline-block;
-            margin-right: 15px;
-            margin-top: 10px;
-        }
-        a {
-            color: #1e2a38;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 15px;
+            margin: 10px 10px 0 0;
+            padding: 10px 15px;
             background-color: #1e2a38;
             color: white;
-            margin-top: 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .artifact-links a:hover {
+            background-color: #3b4f63;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1e2a38;
+            color: white;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -62,90 +88,61 @@
 </header>
 
 <main>
-    <p>Welcome to my professional ePortfolio for the Computer Science program at SNHU.</p>
-    <p>This portfolio showcases enhanced artifacts in the following areas:</p>
 
-    <ul>
-        <li>Software Engineering and Design</li>
-        <li>Algorithms and Data Structures</li>
-        <li>Databases</li>
-    </ul>
-
-    <p>This portfolio reflects my growth in secure coding, structured problem-solving, and system design.</p>
+    <div class="section">
+        <p>Welcome to my professional ePortfolio for the Computer Science program at SNHU.</p>
+        <p>This portfolio showcases my work in software design, algorithms, and database security.</p>
+    </div>
 
     <!-- CODE REVIEW -->
     <div class="section">
         <h2>Code Review</h2>
         <p>
             This code review focuses on my SQL Injection Detection project from CS 405 Secure Coding.
-            In this review, I explain the original code, point out weaknesses, and discuss the
-            improvements I planned for my capstone enhancements.
+            I analyze the original code, identify weaknesses, and explain planned improvements.
         </p>
-        <p>
-            <a href="https://youtu.be/JnkeOl-6uW8" target="_blank">Watch Code Review Video</a>
-        </p>
+
+        <div class="artifact-links">
+            <a href="https://youtu.be/JnkeOl-6uW8" target="_blank">Watch Video</a>
+        </div>
     </div>
 
     <!-- ENHANCEMENT ONE -->
     <div class="section">
-        <h2>Enhancement One: Software Design and Engineering</h2>
+        <h2>Enhancement One: Software Design</h2>
 
         <p>
-            This enhancement focuses on improving the structure and organization of my SQL Injection Detection
-            program from CS 405 Secure Coding. In the original version, the logic was less organized, which
-            made the code harder to read and maintain.
-        </p>
-
-        <p>
-            For this enhancement, I refactored the program into smaller and more focused functions such as
-            normalize_sql, has_where_clause, is_suspected_injection, execute_sql, and run_query. This made
-            the code more readable, easier to maintain, and better structured overall.
-        </p>
-
-        <p>
-            This enhancement demonstrates my ability to apply software design principles by creating modular
-            code that is easier to understand, reuse, and improve.
+            I improved the structure of the program by breaking it into smaller functions.
+            This made the code easier to read, maintain, and expand.
         </p>
 
         <div class="artifact-links">
-            <a href="SQLInjection_Original.cpp" target="_blank">View Original Code</a>
-            <a href="SQLInjection_Enhanced.cpp" target="_blank">View Enhanced Code</a>
-            <a href="Enhancement_One.docx" target="_blank">View Enhancement One Narrative</a>
+            <a href="SQLInjection_Original.cpp" target="_blank">Original Code</a>
+            <a href="SQLInjection_Enhanced.cpp" target="_blank">Enhanced Code</a>
+            <a href="Enhancement_One.docx" target="_blank">Narrative</a>
         </div>
     </div>
 
+    <!-- ENHANCEMENT TWO -->
     <div class="section">
-    <h2>Enhancement Two: Algorithms and Data Structures</h2>
+        <h2>Enhancement Two: Algorithms</h2>
 
-    <p>
-        This enhancement focuses on improving the SQL injection detection logic in my project from CS 405 Secure Coding.
-        In the earlier version, the program only used one regular expression to detect a basic type of SQL injection,
-        which made it limited and not flexible.
-    </p>
+        <p>
+            I improved SQL injection detection by using multiple regex patterns stored in a vector
+            and looping through them. This made the detection more flexible and scalable.
+        </p>
 
-    <p>
-        For this enhancement, I improved the detection logic by using a vector of regular expression patterns and
-        looping through them to check for multiple possible attack patterns. This allows the program to detect
-        different types of SQL injection attempts such as OR-based injections, comment injections, UNION attacks,
-        and destructive queries.
-    </p>
-
-    <p>
-        This enhancement demonstrates my ability to apply algorithmic thinking and use data structures in a practical
-        way. It also makes the program more scalable because new detection patterns can be added easily.
-    </p>
-
-    <div class="artifact-links">
-        <a href="Milestone3_Original.cpp" target="_blank">View Original Code</a>
-        <a href="Milestone3_Enhanced.cpp" target="_blank">View Enhanced Code</a>
-        <a href="Enhancement_Two.docx" target="_blank">View Enhancement Two Narrative</a>
+        <div class="artifact-links">
+            <a href="Milestone3_Original.cpp" target="_blank">Original Code</a>
+            <a href="Milestone3_Enhanced.cpp" target="_blank">Enhanced Code</a>
+            <a href="Enhancement_Two.docx" target="_blank">Narrative</a>
+        </div>
     </div>
-</div>
 
 </main>
 
 <footer>
-    &copy; 2025 Stan H | SNHU Computer Science
+    &copy; 2026 Stan H | SNHU Computer Science
 </footer>
 
 </body>
