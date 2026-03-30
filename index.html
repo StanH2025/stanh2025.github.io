@@ -3,426 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stan H - CS 499 ePortfolio</title>
+    <title>Stan Homes - CS 499 ePortfolio</title>
+
     <style>
         :root {
-            --bg: #edf2f7;
-            --card: rgba(255, 255, 255, 0.88);
+            --card: rgba(255, 255, 255, 0.9);
             --text: #1f2937;
             --muted: #4b5563;
             --primary: #1e2a38;
             --primary-2: #33495f;
-            --accent: #4f8cff;
-            --border: rgba(30, 42, 56, 0.10);
+            --border: rgba(30, 42, 56, 0.1);
             --shadow: 0 10px 30px rgba(20, 30, 50, 0.08);
             --radius: 18px;
-        }
-
-        * {
-            box-sizing: border-box;
-            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             font-family: "Segoe UI", Tahoma, sans-serif;
-            background:
-                radial-gradient(circle at top left, #f7faff 0%, transparent 35%),
-                linear-gradient(to right, #eef2f7, #e3e9f2);
+            background: linear-gradient(to right, #eef2f7, #e3e9f2);
             color: var(--text);
         }
 
         .top-nav {
             position: sticky;
             top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            background: white;
             border-bottom: 1px solid var(--border);
+            z-index: 1000;
         }
 
-        .top-nav .nav-inner {
+        .nav-inner {
             max-width: 1050px;
-            margin: 0 auto;
+            margin: auto;
             padding: 14px 24px;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
-            align-items: center;
-            gap: 12px;
         }
 
         .brand {
-            font-weight: 700;
+            font-weight: bold;
             color: var(--primary);
-            font-size: 1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
         }
 
         .nav-links a {
+            margin: 0 10px;
             text-decoration: none;
             color: var(--primary);
             font-size: 0.95rem;
-            padding: 8px 12px;
-            border-radius: 999px;
-            transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            background: #e8eef7;
-            color: var(--primary-2);
         }
 
         header {
-            background: linear-gradient(135deg, #1e2a38 0%, #2d3e50 55%, #3b4f63 100%);
+            background: linear-gradient(135deg, #1e2a38, #3b4f63);
             color: white;
-            padding: 72px 24px 56px;
+            padding: 70px 20px;
             text-align: center;
-            box-shadow: inset 0 -1px 0 rgba(255,255,255,0.08);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.6rem;
-            letter-spacing: 0.3px;
+            font-size: 2.5rem;
         }
 
         header h2 {
-            margin: 10px 0 0;
-            font-size: 1.15rem;
-            font-weight: 400;
-            opacity: 0.92;
-            color: white;
-        }
-
-        .hero-text {
-            max-width: 760px;
-            margin: 22px auto 0;
-            line-height: 1.7;
-            font-size: 1rem;
-            opacity: 0.95;
-        }
-
-        .hero-badges {
-            margin-top: 24px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .badge {
-            background: rgba(255,255,255,0.14);
-            border: 1px solid rgba(255,255,255,0.16);
-            color: white;
-            padding: 10px 14px;
-            border-radius: 999px;
-            font-size: 0.92rem;
+            margin-top: 10px;
+            font-weight: normal;
+            font-size: 1.2rem;
         }
 
         main {
             max-width: 1050px;
-            margin: 0 auto;
-            padding: 36px 20px 48px;
+            margin: auto;
+            padding: 30px 20px;
         }
 
-        .intro-card,
         .section {
             background: var(--card);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border);
             border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 20px;
             box-shadow: var(--shadow);
         }
 
-        .intro-card {
-            padding: 28px;
-            margin-bottom: 22px;
-        }
-
-        .section {
-            padding: 28px;
-            margin-top: 22px;
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 34px rgba(20, 30, 50, 0.11);
-        }
-
-        .section-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        h2 {
-            margin: 0;
+        .section h2 {
+            margin-top: 0;
             color: var(--primary);
-            font-size: 1.45rem;
         }
 
         p {
-            line-height: 1.75;
+            line-height: 1.7;
             color: var(--muted);
-            margin: 10px 0 0;
-        }
-
-        .tag {
-            display: inline-block;
-            padding: 7px 12px;
-            border-radius: 999px;
-            background: #e8f0ff;
-            color: #234a91;
-            font-size: 0.84rem;
-            font-weight: 600;
         }
 
         .artifact-links {
-            margin-top: 18px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            margin-top: 15px;
         }
 
         .artifact-links a {
             display: inline-block;
-            padding: 11px 15px;
+            margin-right: 10px;
+            padding: 10px 14px;
             background: var(--primary);
             color: white;
-            border-radius: 10px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 0.93rem;
-            font-weight: 600;
-            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 6px 14px rgba(30, 42, 56, 0.16);
-        }
-
-        .artifact-links a:hover {
-            background: var(--primary-2);
-            transform: translateY(-1px);
-        }
-
-        .video-wrap {
-            margin-top: 18px;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: 0 8px 24px rgba(20, 30, 50, 0.08);
+            font-size: 0.9rem;
         }
 
         .video-wrap iframe {
             width: 100%;
-            height: 420px;
-            border: 0;
-            display: block;
+            height: 400px;
+            border: none;
+            margin-top: 15px;
         }
 
         footer {
             text-align: center;
-            padding: 24px;
+            padding: 20px;
             background: var(--primary);
             color: white;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 56px 18px 42px;
-            }
-
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .video-wrap iframe {
-                height: 240px;
-            }
-
-            .section,
-            .intro-card {
-                padding: 22px;
-            }
         }
     </style>
 </head>
+
 <body>
 
-    <nav class="top-nav">
-        <div class="nav-inner">
-            <div class="brand">Stan H | CS 499 ePortfolio</div>
-            <div class="nav-links">
-                <a href="#self-assessment">About Me</a>
-                <a href="#overview">Overview</a>
-                <a href="#code-review">Code Review</a>
-                <a href="#enhancement-one">Enhancement 1</a>
-                <a href="#enhancement-two">Enhancement 2</a>
-                <a href="#enhancement-three">Enhancement 3</a>
-            </div>
+<nav class="top-nav">
+    <div class="nav-inner">
+        <div class="brand">Stan Homes | CS 499 ePortfolio</div>
+        <div class="nav-links">
+            <a href="#self">About Me</a>
+            <a href="#code">Code Review</a>
+            <a href="#one">Enhancement 1</a>
+            <a href="#two">Enhancement 2</a>
+            <a href="#three">Enhancement 3</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <header>
-        <h1>Stan H</h1>
-        <h2>CS 499 Capstone ePortfolio</h2>
-        <p class="hero-text">
-            This portfolio highlights my growth in secure coding, software design, algorithm development,
-            and database security through a series of enhancements to my SQL Injection Detection project.
-        </p>
-        <div class="hero-badges">
-            <span class="badge">Software Design</span>
-            <span class="badge">Algorithms</span>
-            <span class="badge">Databases</span>
-            <span class="badge">Security</span>
-        </div>
-    </header>
+<header>
+    <h1>Stan Homes</h1>
+    <h2>CS 499 Capstone ePortfolio</h2>
+</header>
 
-    <main>
-        <div class="section" id="self-assessment" style="border-left: 6px solid #1e2a38;">
-            <div class="section-header">
-                <h2>Professional Self-Assessment</h2>
-                <span class="tag">Capstone Reflection</span>
-            </div>
+<main>
 
-            <p>
-                Hi, my name is Stan H, and I am a Computer Science student with a strong interest in IT, networking,
-                and secure system design. Throughout my time in the Computer Science program, I have developed a solid
-                foundation in programming, problem-solving, and security-focused thinking.
-            </p>
+<div class="section" id="self">
+<h2>Professional Self-Assessment</h2>
 
-            <p>
-                One of the biggest areas I improved in was communication. I learned how to explain technical concepts clearly,
-                which is important when working with team members or stakeholders who may not have a technical background.
-            </p>
+<p>
+Hi, my name is Stan Homes, and I am a Computer Science student with a strong interest in IT, networking, and secure system design. Throughout my time in the Computer Science program, I have developed a solid foundation in programming, problem-solving, and security-focused thinking. Building this ePortfolio helped me connect everything I learned and see how my skills apply to real-world systems, not just assignments. It also helped me better understand my strengths and shape my career goals toward becoming a network engineer.
+</p>
 
-            <p>
-                My understanding of algorithms and data structures improved through projects where I applied logic step by step.
-                In my SQL injection detection program, I used a vector of patterns and looping logic to improve how attacks are detected.
-            </p>
+<p>
+One of the biggest areas I improved in was communication. Over time, I became more comfortable explaining technical concepts in a clear and simple way. This is important when working with team members or stakeholders who may not have a technical background. Through coursework and discussions, I practiced breaking down problems and explaining my thinking step by step, which helped me become more organized and confident when solving problems.
+</p>
 
-            <p>
-                I also developed stronger skills in software design and databases by organizing my code into smaller functions and
-                implementing prepared statements to prevent SQL injection. This helped me understand how to build more secure systems.
-            </p>
+<p>
+In addition to my coursework, I gained real-world experience collaborating with others in my IT role. I worked with coworkers to troubleshoot issues such as outages and system problems, where we had to identify the root cause and resolve tickets efficiently. This experience helped me understand how to work in a team environment and communicate clearly under pressure. I also improved my ability to explain technical issues to non-technical users, which is important when supporting stakeholders. Outside of my coursework, I built a full stack web application using the MEAN stack, which gave me additional experience working with both frontend and backend systems and strengthened my understanding of how applications are built and connected.
+</p>
 
-            <p>
-                Security became a major focus for me. I learned to think beyond just making programs work and instead focus on how to
-                prevent vulnerabilities. This mindset is important in real-world IT and development roles.
-            </p>
+<p>
+My understanding of algorithms and data structures improved through hands-on work where I applied logic step by step. In my SQL injection detection program, I used a vector of patterns and looping logic to improve how attacks are detected. This made the program more flexible and able to handle multiple types of input instead of relying on a single pattern. I also developed stronger skills in software design by organizing my code into smaller, more manageable functions, which made my programs easier to read and maintain.
+</p>
 
-            <p>
-                The artifacts in this portfolio reflect my growth. My code review shows my ability to analyze code, while my enhancements
-                demonstrate improvements in software design, algorithms, and database security. Together, they show how I can take an
-                existing system and improve it step by step.
-            </p>
+<p>
+I also strengthened my knowledge of databases and security. I worked with SQLite and improved my program by implementing prepared statements to prevent SQL injection. This helped me understand how to separate user input from SQL queries and follow secure coding practices. Security became a major focus for me, and I learned to think beyond just making programs work by considering how systems could be attacked and how to prevent those issues. This mindset is important in both software development and networking roles.
+</p>
 
-            <p>
-                Overall, this program has prepared me to enter the IT field with a stronger understanding of systems, security, and
-                problem-solving. I am confident in my ability to continue learning and apply these skills in a professional environment.
-            </p>
-        </div>
+<p>
+The artifacts in this portfolio reflect my overall growth throughout the program. My code review demonstrates my ability to analyze existing code and identify areas for improvement. Enhancement one shows my ability to improve software structure and design. Enhancement two highlights my ability to apply algorithms and data structures to improve functionality. Enhancement three focuses on database security and demonstrates how I can implement real-world solutions to prevent vulnerabilities. Together, these artifacts show how I can take an existing system and improve it step by step while applying different areas of computer science.
+</p>
 
-        <div class="intro-card" id="overview" style="border-left: 6px solid #4f8cff;">
-            <p>
-                Welcome to my professional ePortfolio. This site showcases my growth throughout the Computer Science
-                program at SNHU and highlights my work in software design, algorithms, and database security.
-            </p>
+<p>
+Overall, this program has prepared me to enter the IT field with a strong foundation in systems, security, and problem-solving. My goal is to continue developing my skills in networking and grow into a network engineer role where I can work with infrastructure, troubleshoot network issues, and help build secure and reliable systems. I am confident in my ability to keep learning and applying my knowledge in a professional environment.
+</p>
 
-            <p>
-                Each section demonstrates how I improved a real system step by step, focusing not just on functionality,
-                but also on structure, efficiency, and security.
-            </p>
-        </div>
+</div>
 
-        <div class="section" id="code-review">
-            <div class="section-header">
-                <h2>Code Review</h2>
-                <span class="tag">CS 405 Secure Coding</span>
-            </div>
-            <p>
-                This code review focuses on my SQL Injection Detection project from CS 405 Secure Coding.
-                In this review, I analyze the original code, identify weaknesses, and explain the planned
-                improvements that guided my capstone enhancements.
-            </p>
+<div class="section" id="code">
+<h2>Code Review</h2>
+<p>This code review explains my SQL Injection Detection project and the improvements I planned.</p>
 
-            <div class="video-wrap">
-                <iframe
-                    src="https://www.youtube.com/embed/JnkeOl-6uW8"
-                    title="Code Review Video"
-                    allowfullscreen>
-                </iframe>
-            </div>
+<div class="video-wrap">
+<iframe src="https://www.youtube.com/embed/JnkeOl-6uW8" allowfullscreen></iframe>
+</div>
 
-            <div class="artifact-links">
-                <a href="https://youtu.be/JnkeOl-6uW8" target="_blank">Open Video on YouTube</a>
-            </div>
-        </div>
+<div class="artifact-links">
+<a href="https://youtu.be/JnkeOl-6uW8" target="_blank">Open Video</a>
+</div>
+</div>
 
-        <div class="section" id="enhancement-one">
-            <div class="section-header">
-                <h2>Enhancement One: Software Design</h2>
-                <span class="tag">Modular Refactoring</span>
-            </div>
-            <p>
-                I improved the structure of the program by breaking the logic into smaller functions.
-                This made the code easier to read, maintain, and expand.
-            </p>
+<div class="section" id="one">
+<h2>Enhancement One: Software Design</h2>
+<p>I improved the structure of the program by breaking the logic into smaller functions.</p>
 
-            <div class="artifact-links">
-                <a href="SQLInjection_Original.cpp" target="_blank">Original Code</a>
-                <a href="SQLInjection_Enhanced.cpp" target="_blank">Enhanced Code</a>
-                <a href="Enhancement_One.docx" target="_blank">Narrative</a>
-            </div>
-        </div>
+<div class="artifact-links">
+<a href="SQLInjection_Original.cpp">Original Code</a>
+<a href="SQLInjection_Enhanced.cpp">Enhanced Code</a>
+<a href="Enhancement_One.docx">Narrative</a>
+</div>
+</div>
 
-        <div class="section" id="enhancement-two">
-            <div class="section-header">
-                <h2>Enhancement Two: Algorithms</h2>
-                <span class="tag">Regex Patterns + Vector</span>
-            </div>
-            <p>
-                I improved SQL injection detection by using multiple regular expression patterns stored
-                in a vector and looping through them. This made the detection more flexible and scalable.
-            </p>
+<div class="section" id="two">
+<h2>Enhancement Two: Algorithms</h2>
+<p>I improved SQL injection detection using multiple patterns and looping logic.</p>
 
-            <div class="artifact-links">
-                <a href="Milestone3_Original.cpp" target="_blank">Original Code</a>
-                <a href="Milestone3_Enhanced.cpp" target="_blank">Enhanced Code</a>
-                <a href="Enhancement_Two.docx" target="_blank">Narrative</a>
-            </div>
-        </div>
+<div class="artifact-links">
+<a href="Milestone3_Original.cpp">Original Code</a>
+<a href="Milestone3_Enhanced.cpp">Enhanced Code</a>
+<a href="Enhancement_Two.docx">Narrative</a>
+</div>
+</div>
 
-        <div class="section" id="enhancement-three">
-            <div class="section-header">
-                <h2>Enhancement Three: Databases</h2>
-                <span class="tag">Prepared Statements</span>
-            </div>
-            <p>
-                I improved database security by implementing prepared statements in SQLite.
-                This enhancement separates user input from the SQL query structure and helps
-                prevent SQL injection at the database level.
-            </p>
+<div class="section" id="three">
+<h2>Enhancement Three: Databases</h2>
+<p>I improved database security by implementing prepared statements to prevent SQL injection.</p>
 
-            <div class="artifact-links">
-                <a href="Milestone4_Original.cpp" target="_blank">Original Code</a>
-                <a href="Milestone4_Enhanced.cpp" target="_blank">Final Enhanced Code</a>
-                <a href="Enhancement_Three.docx" target="_blank">Narrative</a>
-            </div>
-        </div>
-    </main>
+<div class="artifact-links">
+<a href="Milestone4_Original.cpp">Original Code</a>
+<a href="Milestone4_Enhanced.cpp">Final Code</a>
+<a href="Enhancement_Three.docx">Narrative</a>
+</div>
+</div>
 
-    <footer>
-        &copy; 2026 Stan H | SNHU Computer Science
-    </footer>
+</main>
+
+<footer>
+&copy; 2026 Stan Homes | SNHU Computer Science
+</footer>
 
 </body>
 </html>
