@@ -1,176 +1,378 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stan H - CS 499 ePortfolio</title>
     <style>
+        :root {
+            --bg: #edf2f7;
+            --card: rgba(255, 255, 255, 0.88);
+            --text: #1f2937;
+            --muted: #4b5563;
+            --primary: #1e2a38;
+            --primary-2: #33495f;
+            --accent: #4f8cff;
+            --border: rgba(30, 42, 56, 0.10);
+            --shadow: 0 10px 30px rgba(20, 30, 50, 0.08);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: linear-gradient(to right, #eef2f7, #e3e9f2);
             margin: 0;
-            padding: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background:
+                radial-gradient(circle at top left, #f7faff 0%, transparent 35%),
+                linear-gradient(to right, #eef2f7, #e3e9f2);
+            color: var(--text);
+        }
+
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .top-nav .nav-inner {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 0.95rem;
+            padding: 8px 12px;
+            border-radius: 999px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: #e8eef7;
+            color: var(--primary-2);
         }
 
         header {
-            background: linear-gradient(135deg, #1e2a38, #2d3e50);
+            background: linear-gradient(135deg, #1e2a38 0%, #2d3e50 55%, #3b4f63 100%);
             color: white;
-            padding: 30px;
+            padding: 72px 24px 56px;
             text-align: center;
+            box-shadow: inset 0 -1px 0 rgba(255,255,255,0.08);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            letter-spacing: 0.3px;
+        }
+
+        header h2 {
+            margin: 10px 0 0;
+            font-size: 1.15rem;
+            font-weight: 400;
+            opacity: 0.92;
+        }
+
+        .hero-text {
+            max-width: 760px;
+            margin: 22px auto 0;
+            line-height: 1.7;
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        .hero-badges {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.16);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-size: 0.92rem;
         }
 
         main {
-            padding: 40px;
-            max-width: 900px;
-            margin: auto;
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 36px 20px 48px;
         }
 
-        h1 {
-            margin-bottom: 5px;
-        }
-
-        h2 {
-            margin-bottom: 10px;
-            color: #1e2a38;
-        }
-
-        p {
-            line-height: 1.6;
-            color: #333;
-        }
-
-        ul {
-            line-height: 1.8;
-        }
-
-        /* CARD STYLE */
+        .intro-card,
         .section {
-            background: white;
-            padding: 25px;
-            margin-top: 25px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.2s ease;
+            background: var(--card);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .intro-card {
+            padding: 28px;
+            margin-bottom: 22px;
+        }
+
+        .section {
+            padding: 28px;
+            margin-top: 22px;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
         }
 
         .section:hover {
             transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(20, 30, 50, 0.11);
         }
 
-        /* BUTTON LINKS */
+        .section-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.45rem;
+        }
+
+        p {
+            line-height: 1.75;
+            color: var(--muted);
+            margin: 10px 0 0;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: #e8f0ff;
+            color: #234a91;
+            font-size: 0.84rem;
+            font-weight: 600;
+        }
+
+        .artifact-links {
+            margin-top: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         .artifact-links a {
             display: inline-block;
-            margin: 10px 10px 0 0;
-            padding: 10px 15px;
-            background-color: #1e2a38;
+            padding: 11px 15px;
+            background: var(--primary);
             color: white;
-            border-radius: 6px;
+            border-radius: 10px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 0.93rem;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 14px rgba(30, 42, 56, 0.16);
         }
 
         .artifact-links a:hover {
-            background-color: #3b4f63;
+            background: var(--primary-2);
+            transform: translateY(-1px);
+        }
+
+        .video-wrap {
+            margin-top: 18px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 24px rgba(20, 30, 50, 0.08);
+        }
+
+        .video-wrap iframe {
+            width: 100%;
+            height: 420px;
+            border: 0;
+            display: block;
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #1e2a38;
+            padding: 24px;
+            background: var(--primary);
             color: white;
             margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 56px 18px 42px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .video-wrap iframe {
+                height: 240px;
+            }
+
+            .section,
+            .intro-card {
+                padding: 22px;
+            }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Stan H</h1>
-    <h2>CS 499 Capstone ePortfolio</h2>
-</header>
-
-<main>
-
-    <div class="section">
-        <p>Welcome to my professional ePortfolio for the Computer Science program at SNHU.</p>
-        <p>This portfolio showcases my work in software design, algorithms, and database security.</p>
-    </div>
-
-    <!-- CODE REVIEW -->
-    <div class="section">
-        <h2>Code Review</h2>
-        <p>
-            This code review focuses on my SQL Injection Detection project from CS 405 Secure Coding.
-            I analyze the original code, identify weaknesses, and explain planned improvements.
-        </p>
-
-        <div class="artifact-links">
-            <a href="https://youtu.be/JnkeOl-6uW8" target="_blank">Watch Video</a>
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <div class="brand">Stan H | CS 499 ePortfolio</div>
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#code-review">Code Review</a>
+                <a href="#enhancement-one">Enhancement 1</a>
+                <a href="#enhancement-two">Enhancement 2</a>
+                <a href="#enhancement-three">Enhancement 3</a>
+            </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- ENHANCEMENT ONE -->
-    <div class="section">
-        <h2>Enhancement One: Software Design</h2>
-
-        <p>
-            I improved the structure of the program by breaking it into smaller functions.
-            This made the code easier to read, maintain, and expand.
+    <header>
+        <h1>Stan H</h1>
+        <h2>CS 499 Capstone ePortfolio</h2>
+        <p class="hero-text">
+            This portfolio highlights my growth in secure coding, software design, algorithm development,
+            and database security through a series of enhancements to my SQL Injection Detection project.
         </p>
-
-        <div class="artifact-links">
-            <a href="SQLInjection_Original.cpp" target="_blank">Original Code</a>
-            <a href="SQLInjection_Enhanced.cpp" target="_blank">Enhanced Code</a>
-            <a href="Enhancement_One.docx" target="_blank">Narrative</a>
+        <div class="hero-badges">
+            <span class="badge">Software Design</span>
+            <span class="badge">Algorithms</span>
+            <span class="badge">Databases</span>
+            <span class="badge">Security</span>
         </div>
-    </div>
+    </header>
 
-    <!-- ENHANCEMENT TWO -->
-    <div class="section">
-        <h2>Enhancement Two: Algorithms</h2>
-
-        <p>
-            I improved SQL injection detection by using multiple regex patterns stored in a vector
-            and looping through them. This made the detection more flexible and scalable.
-        </p>
-
-        <div class="artifact-links">
-            <a href="Milestone3_Original.cpp" target="_blank">Original Code</a>
-            <a href="Milestone3_Enhanced.cpp" target="_blank">Enhanced Code</a>
-            <a href="Enhancement_Two.docx" target="_blank">Narrative</a>
+    <main>
+        <div class="intro-card" id="overview">
+            <p>
+                Welcome to my professional ePortfolio for the Computer Science program at SNHU.
+                This site showcases my code review and enhancement work in software engineering,
+                algorithms and data structures, and databases.
+            </p>
         </div>
-    </div>
 
-    <div class="section">
-    <h2>Enhancement Three: Databases</h2>
+        <div class="section" id="code-review">
+            <div class="section-header">
+                <h2>Code Review</h2>
+                <span class="tag">CS 405 Secure Coding</span>
+            </div>
+            <p>
+                This code review focuses on my SQL Injection Detection project from CS 405 Secure Coding.
+                In this review, I analyze the original code, identify weaknesses, and explain the planned
+                improvements that guided my capstone enhancements.
+            </p>
 
-    <p>
-        This enhancement focuses on improving database security in my SQL Injection Detection program.
-        In the original version, SQL queries were built using direct user input, which made the program
-        vulnerable to SQL injection attacks.
-    </p>
+            <div class="video-wrap">
+                <iframe
+                    src="https://www.youtube.com/embed/JnkeOl-6uW8"
+                    title="Code Review Video"
+                    allowfullscreen>
+                </iframe>
+            </div>
 
-    <p>
-        For this enhancement, I implemented prepared statements using SQLite. Instead of inserting user
-        input directly into SQL queries, I used parameter binding to separate the query from the input.
-        This prevents malicious input from being executed and makes the program more secure.
-    </p>
+            <div class="artifact-links">
+                <a href="https://youtu.be/JnkeOl-6uW8" target="_blank">Open Video on YouTube</a>
+            </div>
+        </div>
 
-    <p>
-        This final version of the program includes improvements in software design, algorithm logic,
-        and database security.
-    </p>
+        <div class="section" id="enhancement-one">
+            <div class="section-header">
+                <h2>Enhancement One: Software Design</h2>
+                <span class="tag">Modular Refactoring</span>
+            </div>
+            <p>
+                I improved the structure of the program by breaking the logic into smaller functions.
+                This made the code easier to read, maintain, and expand.
+            </p>
 
-    <div class="artifact-links">
-        <a href="Milestone4_Original.cpp" target="_blank">Original Code</a>
-        <a href="Milestone4_Enhanced.cpp" target="_blank">Final Enhanced Code</a>
-        <a href="Enhancement_Three.docx" target="_blank">Narrative</a>
-    </div>
-</div>
+            <div class="artifact-links">
+                <a href="SQLInjection_Original.cpp" target="_blank">Original Code</a>
+                <a href="SQLInjection_Enhanced.cpp" target="_blank">Enhanced Code</a>
+                <a href="Enhancement_One.docx" target="_blank">Narrative</a>
+            </div>
+        </div>
 
-</main>
+        <div class="section" id="enhancement-two">
+            <div class="section-header">
+                <h2>Enhancement Two: Algorithms</h2>
+                <span class="tag">Regex Patterns + Vector</span>
+            </div>
+            <p>
+                I improved SQL injection detection by using multiple regular expression patterns stored
+                in a vector and looping through them. This made the detection more flexible and scalable.
+            </p>
 
-<footer>
-    &copy; 2026 Stan H | SNHU Computer Science
-</footer>
+            <div class="artifact-links">
+                <a href="Milestone3_Original.cpp" target="_blank">Original Code</a>
+                <a href="Milestone3_Enhanced.cpp" target="_blank">Enhanced Code</a>
+                <a href="Enhancement_Two.docx" target="_blank">Narrative</a>
+            </div>
+        </div>
+
+        <div class="section" id="enhancement-three">
+            <div class="section-header">
+                <h2>Enhancement Three: Databases</h2>
+                <span class="tag">Prepared Statements</span>
+            </div>
+            <p>
+                I improved database security by implementing prepared statements in SQLite.
+                This enhancement separates user input from the SQL query structure and helps
+                prevent SQL injection at the database level.
+            </p>
+
+            <div class="artifact-links">
+                <a href="Milestone4_Original.cpp" target="_blank">Original Code</a>
+                <a href="Milestone4_Enhanced.cpp" target="_blank">Final Enhanced Code</a>
+                <a href="Enhancement_Three.docx" target="_blank">Narrative</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Stan H | SNHU Computer Science
+    </footer>
 
 </body>
 </html>
